@@ -1,0 +1,22 @@
+{
+  "name": "typeScript-100",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha src --recursive",
+    "start": "tsc -p . -w"
+  },
+  "keywords": [],
+  "author": "pausouche",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.1.0",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3"
+  },
+  "dependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.41",
+    "chai": "^3.5.0"
+  }
+}
