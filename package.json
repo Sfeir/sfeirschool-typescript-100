@@ -2,7 +2,7 @@
   "name": "typeScript-100",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha src --recursive",
+    "test": "mocha dist --recursive",
     "start": "tsc -p . -w"
   },
   "keywords": [],
