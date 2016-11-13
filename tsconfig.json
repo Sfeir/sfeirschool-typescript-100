@@ -5,7 +5,11 @@
     "noImplicitAny": true,
     "sourceMap": false,
     "experimentalDecorators": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "pretty": true,
+    "lib": [
+      "es2015"
+    ]
   },
   "exclude": [
     "node_modules"
