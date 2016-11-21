@@ -3,13 +3,13 @@ import { expect } from 'chai';
 describe('TS types', () => {
 
   it('should be the same as in JavaScript for primitve types', () => {
-    var aBoolean: _ ;
-    var aString: _ ;
-    var aNumber: _ ;
+    var aBoolean: boolean ;
+    var aString: string ;
+    var aNumber: number ;
 
-    aBoolean = _ ;
-    aString = _ ;
-    aNumber = _ ;
+    aBoolean = true ;
+    aString = 'abc' ;
+    aNumber = 42 ;
 
     expect(aBoolean).to.be.true;
     expect(aString).to.eq('abc');
@@ -17,22 +17,22 @@ describe('TS types', () => {
   });
 
   it('should have a special notation for arrays', () => {
-    var aList: _ ;
-    aList = [ _ ] ;
+    var aList: number[] ;
+    aList = [1, 2, 3] ;
     
     expect(aList).to.deep.eq([1, 2, 3]);
   });
 
   it('should allow for putting different things in an array', () => {
-    var aList: ( _ | _ )[];
-    aList = _ ;
+    var aList: ( string | number )[];
+    aList = [1, "2"] ;
 
     expect(aList).to.deep.eq([1, "2"]);
   });
 
   it('should have a notation for tuples (fixed sized arrays)', () => {
-    var aTemperature: [ _ , _ ];
-    aTemperature = [ _ , _ ] ;
+    var aTemperature: [ number , 'C' | 'F' ];
+    aTemperature = [32, 'F'] ;
     
     // descructuring declaration - we'll cover this soon
     var [val, unit] = aTemperature;
@@ -42,7 +42,7 @@ describe('TS types', () => {
 
   it('include enum types', () => {
     enum myFirstEnum {
-      _, _
+      red, blue = 2
     }
     
     expect(myFirstEnum.red).to.equal(0);
@@ -50,8 +50,8 @@ describe('TS types', () => {
   });
 
   it('should help you with null and undefined', () => {
-    var nullable: string | _ ;
-    var undefinable: number | _ ;
+    var nullable: string | null ;
+    var undefinable: number | undefined ;
     
     nullable = null;
     undefinable = undefined;
@@ -61,7 +61,7 @@ describe('TS types', () => {
   });
 
   it('should allow for typing function arguments too', () => {
-    function sayHello(name: _) {
+    function sayHello(name: string) {
       return 'Hello '.concat(name);
     }
     expect(sayHello('TypeScript')).to.equal( 'Hello TypeScript' );
