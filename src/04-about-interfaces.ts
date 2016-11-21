@@ -3,14 +3,16 @@ import { expect } from 'chai';
 describe('TS interfaces', () => {
 
   it('should describe the shape of an object', () => {
-    var person: _ = {
+    var person: {firstName: string} = {
       firstName: 'John'
     };
     expect(person.firstName).to.equal('John');
   });
 
   it('can be declared just as JS bindings', () => {
-    _
+    interface IPerson {
+      lastName: string;
+    }
 
     var person: IPerson = {
       lastName: 'Doe'
@@ -23,7 +25,9 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female';
     }
 
-    _
+    interface IPerson {
+      name: string;
+    }
 
     var person: IPerson = {
       gender: 'male',
@@ -38,11 +42,13 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female' | 'other';
     }
 
-    _
+    interface INamedPerson extends IPerson {
+      name: string;
+    }
 
     var person: INamedPerson = {
-      gender: _,
-      name: _
+      gender: 'other',
+      name: 'Conchita'
     };
 
     expect(person.gender).to.equal('other');
@@ -56,10 +62,10 @@ describe('TS interfaces', () => {
     }
 
     var person: IPerson = {
-      firstName: _
+      firstName: 'John'
     };
 
-    if (_) {
+    if (person.lastName) {
       person.lastName = person.lastName.toUpperCase();
     }
 
@@ -71,7 +77,7 @@ describe('TS interfaces', () => {
     // it does not transpile, ad this is good !
     // remove the keyword to pass the test
     interface IPerson {
-      readonly firstName: string;
+      firstName: string;
     }
 
     var error: boolean = false;
@@ -87,7 +93,7 @@ describe('TS interfaces', () => {
     }
 
     expect(error).to.be.true;
-    expect(person.firstName).to.equal( _ );
+    expect(person.firstName).to.equal('John');
   });
 
   it('can describe maps', () => {
@@ -95,7 +101,9 @@ describe('TS interfaces', () => {
       firstName: string;
     }
 
-    _
+    interface IContacts {
+      [index: string]: IPerson;
+    }
 
     var contacts: IContacts = {
       johnId: {firstName: 'John'},
