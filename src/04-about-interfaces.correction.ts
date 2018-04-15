@@ -3,7 +3,7 @@ import { expect } from 'chai';
 describe('TS interfaces', () => {
 
   it('should describe the shape of an object', () => {
-    var person: {firstName: string} = {
+    var person: { firstName: string } = {
       firstName: 'John'
     };
     expect(person.firstName).to.equal('John');
@@ -106,8 +106,8 @@ describe('TS interfaces', () => {
     }
 
     var contacts: IContacts = {
-      johnId: {firstName: 'John'},
-      janeId: {firstName: 'Jane'}
+      johnId: { firstName: 'John' },
+      janeId: { firstName: 'Jane' }
     };
 
     ['johnId', 'janeId'].forEach(id =>

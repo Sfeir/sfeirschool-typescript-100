@@ -87,7 +87,7 @@ describe('TS interfaces', () => {
     }
 
     expect(error).to.be.true;
-    expect(person.firstName).to.equal( _ );
+    expect(person.firstName).to.equal(_);
   });
 
   it('can describe maps', () => {
@@ -98,8 +98,8 @@ describe('TS interfaces', () => {
     _
 
     var contacts: IContacts = {
-      johnId: {firstName: 'John'},
-      janeId: {firstName: 'Jane'}
+      johnId: { firstName: 'John' },
+      janeId: { firstName: 'Jane' }
     };
 
     ['johnId', 'janeId'].forEach(id =>

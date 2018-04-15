@@ -3,9 +3,9 @@ import { expect } from 'chai';
 describe('about typed functions', () => {
 
   it('should be typed values', () => {
-    let sayHello: (name: string) => string ;
+    let sayHello: (name: string) => string;
     sayHello = name => `Hello ${name}`;
-    
+
     expect(sayHello('TypeScript')).to.eq('Hello TypeScript');
   });
 

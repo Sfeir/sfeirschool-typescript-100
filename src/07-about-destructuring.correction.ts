@@ -15,7 +15,7 @@ describe('about destructuring arrays', () => {
 
   it('should count leading commas', () => {
     const all = ['ax', 'why', 'zet'];
-    const [,,z] = all;
+    const [, , z] = all;
     expect(z).to.eq('zet');
   });
 
@@ -35,33 +35,33 @@ describe('about destructuring arrays', () => {
 
 describe('about destructuring objects', () => {
   it('should be simple', () => {
-    const {x} = { x: 1 };
+    const { x } = { x: 1 };
     expect(x).to.equal(1);
   });
 
   it('should find variables properties', () => {
     const magic = { first: 23, second: 42 };
-    const {magic: {second}} = { magic };
+    const { magic: { second } } = { magic };
     expect(second).to.equal(42);
   });
 
   it('should mix object and array', () => {
-    const {z: [,x]} = { z: [23, 42] };
+    const { z: [, x] } = { z: [23, 42] };
     expect(x).to.equal(42);
   });
 
   it('should mix array and object', () => {
-    const [, {lang}] = [null, { lang: 'ES6' }];
+    const [, { lang }] = [null, { lang: 'ES6' }];
     expect(lang).to.equal('ES6');
   });
 
   it('should missing refs become undefined ?', () => {
-    const {z} = <any>{ x: 1, y: 2 };
+    const { z } = <any>{ x: 1, y: 2 };
     expect(z).to.equal(undefined);
   });
 
   it('should destructure from builtins (string)', () => {
-    const {substr} = 'hello';
+    const { substr } = 'hello';
     expect(substr).to.equal(String.prototype.substr);
   });
 });

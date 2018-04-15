@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Validator, {ZipCodeValidator, LettersOnlyValidator as LettersValidator} from './lib/validators';
+import Validator, { ZipCodeValidator, LettersOnlyValidator as LettersValidator } from './lib/validators';
 import * as validators from './lib/validators';
 
 describe('about modules', () => {

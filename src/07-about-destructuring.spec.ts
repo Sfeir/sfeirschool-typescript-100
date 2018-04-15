@@ -15,7 +15,7 @@ describe('about destructuring arrays', () => {
 
   it('should count leading commas', () => {
     const all = ['ax', 'why', 'zet'];
-    const [,z] = all;
+    const [, z] = all;
     expect(z).to.eq('zet');
   });
 
@@ -41,12 +41,12 @@ describe('about destructuring objects', () => {
 
   it('should find variables properties', () => {
     const magic = { first: 23, second: 42 };
-    const {magic: second} = { magic };
+    const { magic: second } = { magic };
     expect(second).to.equal(42);
   });
 
   it('should mix object and array', () => {
-    const {z: [x]} = { z: [23, 42] };
+    const { z: [x] } = { z: [23, 42] };
     expect(x).to.equal(42);
   });
 
@@ -56,7 +56,7 @@ describe('about destructuring objects', () => {
   });
 
   it('should missing refs become undefined ?', () => {
-    const {z} = <any>{ x: 1, z: 2 };
+    const { z } = <any>{ x: 1, z: 2 };
     expect(z).to.equal(undefined);
   });
 

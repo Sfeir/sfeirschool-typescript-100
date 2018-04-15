@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "noImplicitAny": true,
-    "sourceMap": false,
+    "target": "esnext",
     "experimentalDecorators": true,
-    "strictNullChecks": true,
+    "strict": true,
     "pretty": true,
-    "lib": ["es2015", "dom"],
-    "outDir": "./dist",
-    "noEmitOnError": true
+    "lib": [
+      "es2015"
+    ],
   },
   "exclude": [
     "node_modules"
+  ],
+  "types": [
+    "node"
   ]
 }

@@ -58,7 +58,7 @@ describe('about classes', () => {
 
   it('share methods like in pure JS', () => {
     class Developer {
-      constructor(private favouriteLanguage: string) {}
+      constructor(private favouriteLanguage: string) { }
 
       public sayHi() {
         return `Hello my favourite language is ${this.favouriteLanguage}`;
@@ -67,6 +67,6 @@ describe('about classes', () => {
 
     var developer = new Developer('JavaScript');
     // think about what this should be
-    expect(developer.sayHi.call( _ )).to.eq('Hello my favourite language is TypeScript');
+    expect(developer.sayHi.call(_)).to.eq('Hello my favourite language is TypeScript');
   });
 });

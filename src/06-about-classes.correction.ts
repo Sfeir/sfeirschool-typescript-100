@@ -4,7 +4,7 @@ describe('about classes', () => {
 
   it('your first class', () => {
     class SuperHero {
-      constructor(private fname: string, private lname: string) {}
+      constructor(private fname: string, private lname: string) { }
       talk() {
         return `Hi my name is ${this.fname} ${this.lname}`;
       }
@@ -16,7 +16,7 @@ describe('about classes', () => {
 
   it('you can use getter and setters', () => {
     class Person {
-      constructor(public firstName: string, public lastName: string) {}
+      constructor(public firstName: string, public lastName: string) { }
       public get fullName(): string {
         return `${this.firstName} ${this.lastName}`;
       }
@@ -37,7 +37,7 @@ describe('about classes', () => {
     }
 
     class Developer implements IDeveloper {
-      constructor(private _favLang: string) {}
+      constructor(private _favLang: string) { }
       get favouriteLanguage() { return this._favLang; }
     }
 
@@ -63,7 +63,7 @@ describe('about classes', () => {
         super(name, ability);
       }
       talk() {
-        return `${super.talk()} and my master is ${this.master.name}`; 
+        return `${super.talk()} and my master is ${this.master.name}`;
       }
     }
 
@@ -74,7 +74,7 @@ describe('about classes', () => {
 
   it('share methods like in pure JS', () => {
     class Developer {
-      constructor(private favouriteLanguage: string) {}
+      constructor(private favouriteLanguage: string) { }
 
       public sayHi() {
         return `Hello my favourite language is ${this.favouriteLanguage}`;
@@ -83,6 +83,6 @@ describe('about classes', () => {
 
     var developer = new Developer('JavaScript');
     // think about what this should be
-    expect(developer.sayHi.call({favouriteLanguage: 'TypeScript'})).to.eq('Hello my favourite language is TypeScript');
+    expect(developer.sayHi.call({ favouriteLanguage: 'TypeScript' })).to.eq('Hello my favourite language is TypeScript');
   });
 });

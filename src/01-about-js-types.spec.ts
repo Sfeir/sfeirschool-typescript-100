@@ -1,5 +1,12 @@
 import { expect } from 'chai';
-const __: any = Symbol('Replace Me');
+import { describe, it } from 'mocha';
+
+const __ = Symbol('replace me');
+
+function getType(obj: any) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+}
+
 describe('about basic types', () => {
 
   it('you should know the type of true/false', () => {
@@ -53,18 +60,45 @@ describe('about basic types', () => {
   it('you should know the type of arrays', () => {
     var exp = [1, 2, 3];
     expect(typeof exp).to.eq(__);
+    expect(getType(exp)).to.eq(__);
+  });
+
+  it('you should know the type of some primitive instance', () => {
+
+    expect(typeof new Boolean(true)).to.eq(__);
+    expect(getType(new Boolean(true))).to.eq(__);
+
+    expect(typeof new Number(42)).to.eq(__);
+    expect(getType(new Number(42))).to.eq(__);
+
+    expect(typeof new String('foo')).to.eq(__);
+    expect(getType(new String('foo'))).to.eq(__);
+
   });
 
   it('you should know the type of some native things', () => {
+
     expect(typeof new Date()).to.eq(__);
+    expect(getType(new Date())).to.eq(__);
+
     expect(typeof /Regexp/g).to.eq(__);
+    expect(getType(/Regexp/g)).to.eq(__);
+
     expect(typeof Symbol()).to.eq(__);
 
     expect(typeof Date).to.eq(__);
+
+  });
+
+  it('you should know the type of undefined !', () => {
+    var exp = undefined;
+    expect(typeof exp).to.eq(__);
+    expect(getType(exp)).to.eq(__);
   });
 
   it('you should know the type of null !', () => {
     var exp = null;
     expect(typeof exp).to.eq(__);
+    expect(getType(exp)).to.eq(__);
   });
 });

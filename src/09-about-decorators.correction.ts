@@ -15,7 +15,7 @@ describe('about decorators', () => {
     }
   }
 
-  beforeEach(() => calculator = new Calculator());
+  beforeEach(function () { calculator = new Calculator() });
 
   it('1-should log constructor', () => {
     expect(logStack).to.eql(['Create constructor Calculator']);

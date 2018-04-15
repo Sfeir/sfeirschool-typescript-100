@@ -11,8 +11,8 @@ describe('about var, let and const', () => {
       let myLet = 4;
     }
 
-    expect(myVar).to.equal( _ );
-    expect(myLet).to.equal( _ );
+    expect(myVar).to.equal(_);
+    expect(myLet).to.equal(_);
   });
 
   it('should work within for blocks', () => {
@@ -23,8 +23,8 @@ describe('about var, let and const', () => {
         //do something
       }
     }
-    expect(forVar).to.equal( _ );
-    expect(forLet).to.equal( _ );
+    expect(forVar).to.equal(_);
+    expect(forLet).to.equal(_);
   });
 
   it('should create a new block for every iteration', () => {
@@ -32,13 +32,13 @@ describe('about var, let and const', () => {
     for (const i of [1, 2, 3]) {
       sum += i;
     }
-    expect(sum).to.equal( _ );
+    expect(sum).to.equal(_);
   });
 
   it('should solve some async issues', (done) => {
     var varStack: number[] = [];
     var letStack: number[] = [];
-    
+
     for (var forVar = 0; forVar < 3; forVar++) {
       setTimeout(() => varStack.push(forVar));
     }
@@ -48,8 +48,8 @@ describe('about var, let and const', () => {
     }
 
     setTimeout(() => {
-      expect(varStack).to.deep.eq( _ );
-      expect(letStack).to.deep.eq( _ );
+      expect(varStack).to.deep.eq(_);
+      expect(letStack).to.deep.eq(_);
       done();
     });
   });
@@ -67,8 +67,8 @@ describe('about var, let and const', () => {
       error = true;
     }
 
-    expect(error).to.eq( _ );
-    expect(myConstObject.key).to.eq( _ );
+    expect(error).to.eq(_);
+    expect(myConstObject.key).to.eq(_);
   });
 
   it('cannot express constant, but JS can and TS helps', () => {
@@ -84,7 +84,7 @@ describe('about var, let and const', () => {
       error = e instanceof TypeError;
     }
 
-    expect(error).to.eq( _ );
+    expect(error).to.eq(_);
   });
 
 });
