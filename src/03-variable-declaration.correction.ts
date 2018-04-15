@@ -40,14 +40,14 @@ describe('about var, let and const', () => {
     var letStack: number[] = [];
 
     for (var forVar = 0; forVar < 3; forVar++) {
-      setTimeout(() => varStack.push(forVar));
+      setImmediate(() => varStack.push(forVar));
     }
 
     for (let forLet = 0; forLet < 3; forLet++) {
-      setTimeout(() => letStack.push(forLet));
+      setImmediate(() => letStack.push(forLet));
     }
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(varStack).to.deep.eq([3, 3, 3]);
       expect(letStack).to.deep.eq([0, 1, 2]);
       done();

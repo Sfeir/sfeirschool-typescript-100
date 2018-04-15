@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-
+const __ = Symbol('replace me');
 describe('about var, let and const', () => {
 
   it('let should be available only in the block it is declared in', () => {
@@ -11,8 +11,8 @@ describe('about var, let and const', () => {
       let myLet = 4;
     }
 
-    expect(myVar).to.equal(_);
-    expect(myLet).to.equal(_);
+    expect(myVar).to.equal(__);
+    expect(myLet).to.equal(__);
   });
 
   it('should work within for blocks', () => {
@@ -23,8 +23,8 @@ describe('about var, let and const', () => {
         //do something
       }
     }
-    expect(forVar).to.equal(_);
-    expect(forLet).to.equal(_);
+    expect(forVar).to.equal(__);
+    expect(forLet).to.equal(__);
   });
 
   it('should create a new block for every iteration', () => {
@@ -32,7 +32,7 @@ describe('about var, let and const', () => {
     for (const i of [1, 2, 3]) {
       sum += i;
     }
-    expect(sum).to.equal(_);
+    expect(sum).to.equal(__);
   });
 
   it('should solve some async issues', (done) => {
@@ -40,16 +40,16 @@ describe('about var, let and const', () => {
     var letStack: number[] = [];
 
     for (var forVar = 0; forVar < 3; forVar++) {
-      setTimeout(() => varStack.push(forVar));
+      setImmediate(() => varStack.push(forVar));
     }
 
     for (let forLet = 0; forLet < 3; forLet++) {
-      setTimeout(() => letStack.push(forLet));
+      setImmediate(() => letStack.push(forLet));
     }
 
-    setTimeout(() => {
-      expect(varStack).to.deep.eq(_);
-      expect(letStack).to.deep.eq(_);
+    setImmediate(() => {
+      expect(varStack).to.deep.eq(__);
+      expect(letStack).to.deep.eq(__);
       done();
     });
   });
@@ -67,8 +67,8 @@ describe('about var, let and const', () => {
       error = true;
     }
 
-    expect(error).to.eq(_);
-    expect(myConstObject.key).to.eq(_);
+    expect(error).to.eq(__);
+    expect(myConstObject.key).to.eq(__);
   });
 
   it('cannot express constant, but JS can and TS helps', () => {
@@ -84,7 +84,7 @@ describe('about var, let and const', () => {
       error = e instanceof TypeError;
     }
 
-    expect(error).to.eq(_);
+    expect(error).to.eq(__);
   });
 
 });
