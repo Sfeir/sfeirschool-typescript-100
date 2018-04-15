@@ -2,19 +2,19 @@
   "name": "typeScript-100",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha dist --recursive",
-    "start": "tsc -p . -w"
+    "start": "tsc -p . -w",
+    "test": "mocha --bail -r ts-node/register --watch-extensions ts,tsx"
   },
   "keywords": [],
   "author": "pausouche, wolfgangGoedel",
   "license": "MIT",
   "dependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.41",
-    "chai": "^3.5.0",
-    "mocha": "^3.1.0",
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^5.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5",
+    "ts-node": "^5.0.1",
     "tslint": "latest",
-    "typescript": "next"
+    "typescript": "^2.8.1"
   }
 }
