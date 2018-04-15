@@ -74,8 +74,6 @@ describe('TS interfaces', () => {
   });
 
   it('can have readonly properties', () => {
-    // it does not transpile, ad this is good !
-    // remove the keyword to pass the test
     interface IPerson {
       firstName: string;
     }

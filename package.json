@@ -2,7 +2,7 @@
   "name": "typeScript-100",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc -p . -w",
+    "start": "tsc --watch --pretty --noEmit",
     "test": "mocha --bail -r ts-node/register --watch-extensions ts,tsx"
   },
   "keywords": [],

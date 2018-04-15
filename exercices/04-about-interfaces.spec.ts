@@ -1,16 +1,18 @@
 import { expect } from 'chai';
-
+const __ = Symbol('replace me');
+type __ = never;
 describe('TS interfaces', () => {
 
   it('should describe the shape of an object', () => {
-    var person: _ = {
+    var person: __ = {
       firstName: 'John'
     };
     expect(person.firstName).to.equal('John');
   });
 
   it('can be declared just as JS bindings', () => {
-    _
+
+    interface __ { __: __; }
 
     var person: IPerson = {
       lastName: 'Doe'
@@ -23,7 +25,7 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female';
     }
 
-    _
+    interface __ { __: __; }
 
     var person: IPerson = {
       gender: 'male',
@@ -38,11 +40,11 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female' | 'other';
     }
 
-    _
+    interface __ extends __ { __: __; }
 
     var person: INamedPerson = {
-      gender: _,
-      name: _
+      gender: __,
+      name: __
     };
 
     expect(person.gender).to.equal('other');
@@ -56,10 +58,10 @@ describe('TS interfaces', () => {
     }
 
     var person: IPerson = {
-      firstName: _
+      firstName: __
     };
 
-    if (_) {
+    if (__) {
       person.lastName = person.lastName.toUpperCase();
     }
 
@@ -68,8 +70,6 @@ describe('TS interfaces', () => {
   });
 
   it('can have readonly properties', () => {
-    // it does not transpile, ad this is good !
-    // remove the keyword to pass the test
     interface IPerson {
       readonly firstName: string;
     }
@@ -79,6 +79,8 @@ describe('TS interfaces', () => {
       get firstName() { return 'John'; }
     };
 
+    // even if you pass the test, your ide should inform you of an error
+    // remove the keyword to pass the typechecking test
     try {
       person.firstName = 'Jane';
     }
@@ -87,15 +89,14 @@ describe('TS interfaces', () => {
     }
 
     expect(error).to.be.true;
-    expect(person.firstName).to.equal(_);
+    expect(person.firstName).to.equal(__);
   });
 
   it('can describe maps', () => {
     interface IPerson {
       firstName: string;
     }
-
-    _
+    interface __ { __: __; }
 
     var contacts: IContacts = {
       johnId: { firstName: 'John' },

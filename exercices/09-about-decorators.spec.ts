@@ -12,14 +12,14 @@ describe('about decorators', () => {
     }
   }
 
-  beforeEach(() => calculator = new Calculator());
+  beforeEach(function () { calculator = new Calculator() });
 
   it('1-should log constructor', () => {
-    expect(logStack).to.eql( _ );
+    expect(logStack).to.eql(_);
   });
 
   it('2-should log methods', () => {
     calculator.double(2);
-    expect(logStack).to.eql( _ );
+    expect(logStack).to.eql(_);
   });
 });
