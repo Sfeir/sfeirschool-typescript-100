@@ -31,7 +31,7 @@ describe('about typed functions', () => {
 
     const myResolvedPromise: IPromise = {
       then(callBack) {
-        setTimeout(() => callBack(true));
+        setImmediate(() => callBack(true));
       }
     };
 
@@ -42,13 +42,12 @@ describe('about typed functions', () => {
   });
 
   it('should accept any number of parameters', () => {
-    let join: (sep: string, ...rest: string[]) => string;
-    join = (separator: string, ...elm: string[]) => elm.join(separator);
+    let join = (separator: string, ...elm: string[]) => elm.join(separator);
 
     expect(join(', ', 'Hello', 'TypeScript')).to.eq('Hello, TypeScript');
   });
 
-  it('should not loose their this', () => {
+  it('lambda should not loose their this', () => {
     const donald = {
       name: 'Donald',
       greet(msg: string) {
