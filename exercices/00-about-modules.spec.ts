@@ -47,7 +47,7 @@ describe('node require() with es6 export', () => {
 
   it("should be imported as es6 import", () => {
 
-    expect(oldStyleImport).to.eq({
+    expect(oldStyleImport).to.deep.eq({
       foo: __,
       bar: __,
       __: "ceci est l'export par defaut 'façon typescript' !",
