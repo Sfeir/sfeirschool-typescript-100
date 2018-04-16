@@ -39,8 +39,9 @@ describe('about classes', () => {
       constructor(protected name: string) { }
       abstract talk(): string;
     }
-    class SuperHero {
+    class SuperHero extends Citizen {
       constructor(name: string, public alias: string, public ability: string) {
+        super(name);
       }
       public talk() {
         return `I fight against evil with ${this.ability}`;
