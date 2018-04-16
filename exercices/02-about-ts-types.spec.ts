@@ -44,8 +44,8 @@ describe('TS types', () => {
   });
 
   it('should help you with null and undefined', () => {
-    var nullable: string | __ = null;
-    var undefinable: number | __ = undefined;
+    var nullable: string | __ = __;
+    var undefinable: number | __ = __;
 
     expect(nullable).to.be.null;
     expect(undefinable).to.be.undefined;

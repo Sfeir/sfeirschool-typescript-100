@@ -43,7 +43,7 @@ describe('about typed functions', () => {
   });
 
   it('should accept any number of parameters', () => {
-    let join = (__: __, ...__: __[]) => elm.join(separator);
+    let join = (separator: __, ...__: __[]) => elm.join(separator);
 
     expect(join(', ', 'Hello', 'TypeScript')).to.eq('Hello, TypeScript');
   });

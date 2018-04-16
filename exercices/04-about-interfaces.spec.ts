@@ -5,7 +5,7 @@ describe('TS interfaces', () => {
 
   it('should describe the shape of an object', () => {
     var person: __ = {
-      firstName: 'John'
+      __: __
     };
     expect(person.firstName).to.equal('John');
   });
@@ -15,7 +15,7 @@ describe('TS interfaces', () => {
     interface __ { __: __; }
 
     var person: IPerson = {
-      lastName: 'Doe'
+      __: __
     };
     expect(person.lastName).to.equal('Doe');
   });
@@ -29,7 +29,7 @@ describe('TS interfaces', () => {
 
     var person: IPerson = {
       gender: 'male',
-      name: 'Chuck'
+      __: __
     };
     expect(person.gender).to.equal('male');
     expect(person.name).to.equal('Chuck');
@@ -99,8 +99,8 @@ describe('TS interfaces', () => {
     interface __ { __: __; }
 
     var contacts: IContacts = {
-      johnId: { firstName: 'John' },
-      janeId: { firstName: 'Jane' }
+      johnId: { firstName: __ },
+      __: { __: 'Jane' }
     };
 
     ['johnId', 'janeId'].forEach(id =>

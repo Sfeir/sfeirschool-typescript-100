@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-
+const __ = Symbol('replace me');
 describe('about classes', () => {
 
   it('your first class', () => {
     class SuperHero {
-      _
+      __
     }
 
     var hero = new SuperHero('Bruce', 'Wayne');
@@ -13,7 +13,7 @@ describe('about classes', () => {
 
   it('you can use getter and setters', () => {
     class Person {
-      _
+      __
     }
 
     var person = new Person('John', 'Doe');
@@ -35,12 +35,12 @@ describe('about classes', () => {
   });
 
   it('extend another class', () => {
+    abstract class Citizen {
+      constructor(protected name: string) { }
+      abstract talk(): string;
+    }
     class SuperHero {
-      public name: string;
-      public ability: string;
-      constructor(name: string, ability: string) {
-        this.name = name;
-        this.ability = ability;
+      constructor(name: string, public alias: string, public ability: string) {
       }
       public talk() {
         return `I fight against evil with ${this.ability}`;
@@ -48,11 +48,11 @@ describe('about classes', () => {
     }
 
     class Sidekick extends SuperHero {
-      _
+      __
     }
 
-    var batman = new SuperHero('Batman', 'Martial arts');
-    var robin = new Sidekick('Robin', 'Stick', batman);
+    var batman = new SuperHero('Bruce Wayne', 'Batman', 'Martial arts');
+    var robin = new Sidekick('Dick Grayson', 'Robin', 'Stick', batman);
     expect(robin.talk()).to.equal('I fight against evil with Stick and my master is Batman');
   });
 
@@ -67,6 +67,6 @@ describe('about classes', () => {
 
     var developer = new Developer('JavaScript');
     // think about what this should be
-    expect(developer.sayHi.call(_)).to.eq('Hello my favourite language is TypeScript');
+    expect(developer.sayHi.call(__)).to.eq('Hello my favourite language is TypeScript');
   });
 });

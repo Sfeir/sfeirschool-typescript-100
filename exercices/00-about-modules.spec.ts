@@ -43,7 +43,7 @@ describe('node exports', () => {
 
 describe('node require() with es6 export', () => {
 
-  const oldStyleImport = require('./src/monModule');
+  const oldStyleImport = require('./lib/monModule');
 
   it("should be imported as es6 import", () => {
 

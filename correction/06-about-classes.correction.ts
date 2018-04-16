@@ -46,12 +46,14 @@ describe('about classes', () => {
   });
 
   it('extend another class', () => {
-    class SuperHero {
-      public name: string;
-      public ability: string;
-      constructor(name: string, ability: string) {
-        this.name = name;
-        this.ability = ability;
+
+    abstract class Citizen {
+      constructor(protected name: string) { }
+      abstract talk(): string;
+    }
+    class SuperHero extends Citizen {
+      constructor(name: string, public alias: string, public ability: string) {
+        super(name);
       }
       public talk() {
         return `I fight against evil with ${this.ability}`;
@@ -59,16 +61,16 @@ describe('about classes', () => {
     }
 
     class Sidekick extends SuperHero {
-      constructor(name: string, ability: string, private master: SuperHero) {
-        super(name, ability);
+      constructor(name: string, alias: string, ability: string, private master: SuperHero) {
+        super(name, alias, ability);
       }
-      talk() {
-        return `${super.talk()} and my master is ${this.master.name}`;
+      public talk() {
+        return `${super.talk()} and my master is ${this.master.alias}`;
       }
     }
 
-    var batman = new SuperHero('Batman', 'Martial arts');
-    var robin = new Sidekick('Robin', 'Stick', batman);
+    var batman = new SuperHero('Bruce Wayne', 'Batman', 'Martial arts');
+    var robin = new Sidekick('Dick Grayson', 'Robin', 'Stick', batman);
     expect(robin.talk()).to.equal('I fight against evil with Stick and my master is Batman');
   });
 
