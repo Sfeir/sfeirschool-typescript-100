@@ -1,13 +1,10 @@
 import { expect } from 'chai';
-
+const __ = Symbol('replace me');
 describe('about classes', () => {
 
   it('your first class', () => {
     class SuperHero {
-      constructor(private fname: string, private lname: string) {}
-      talk() {
-        return `Hi my name is ${this.fname} ${this.lname}`;
-      }
+      __
     }
 
     var hero = new SuperHero('Bruce', 'Wayne');
@@ -16,13 +13,7 @@ describe('about classes', () => {
 
   it('you can use getter and setters', () => {
     class Person {
-      constructor(public firstName: string, public lastName: string) {}
-      public get fullName(): string {
-        return `${this.firstName} ${this.lastName}`;
-      }
-      public set fullName(value: string) {
-        [this.firstName, this.lastName] = value.split(' ');
-      }
+      __
     }
 
     var person = new Person('John', 'Doe');
@@ -37,8 +28,6 @@ describe('about classes', () => {
     }
 
     class Developer implements IDeveloper {
-      constructor(private _favLang: string) {}
-      get favouriteLanguage() { return this._favLang; }
     }
 
     var developer: IDeveloper = new Developer('TypeScript');
@@ -46,12 +35,13 @@ describe('about classes', () => {
   });
 
   it('extend another class', () => {
-    class SuperHero {
-      public name: string;
-      public ability: string;
-      constructor(name: string, ability: string) {
-        this.name = name;
-        this.ability = ability;
+    abstract class Citizen {
+      constructor(protected name: string) { }
+      abstract talk(): string;
+    }
+    class SuperHero extends Citizen {
+      constructor(name: string, public alias: string, public ability: string) {
+        super(name);
       }
       public talk() {
         return `I fight against evil with ${this.ability}`;
@@ -59,22 +49,17 @@ describe('about classes', () => {
     }
 
     class Sidekick extends SuperHero {
-      constructor(name: string, ability: string, private master: SuperHero) {
-        super(name, ability);
-      }
-      talk() {
-        return `${super.talk()} and my master is ${this.master.name}`; 
-      }
+      __
     }
 
-    var batman = new SuperHero('Batman', 'Martial arts');
-    var robin = new Sidekick('Robin', 'Stick', batman);
+    var batman = new SuperHero('Bruce Wayne', 'Batman', 'Martial arts');
+    var robin = new Sidekick('Dick Grayson', 'Robin', 'Stick', batman);
     expect(robin.talk()).to.equal('I fight against evil with Stick and my master is Batman');
   });
 
   it('share methods like in pure JS', () => {
     class Developer {
-      constructor(private favouriteLanguage: string) {}
+      constructor(private favouriteLanguage: string) { }
 
       public sayHi() {
         return `Hello my favourite language is ${this.favouriteLanguage}`;
@@ -83,6 +68,6 @@ describe('about classes', () => {
 
     var developer = new Developer('JavaScript');
     // think about what this should be
-    expect(developer.sayHi.call({favouriteLanguage: 'TypeScript'})).to.eq('Hello my favourite language is TypeScript');
+    expect(developer.sayHi.call(__)).to.eq('Hello my favourite language is TypeScript');
   });
 });

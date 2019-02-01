@@ -1,21 +1,21 @@
 import { expect } from 'chai';
-
+const __ = Symbol('replace me');
+type __ = never;
 describe('TS interfaces', () => {
 
   it('should describe the shape of an object', () => {
-    var person: {firstName: string} = {
-      firstName: 'John'
+    var person: __ = {
+      __: __
     };
     expect(person.firstName).to.equal('John');
   });
 
   it('can be declared just as JS bindings', () => {
-    interface IPerson {
-      lastName: string;
-    }
+
+    interface __ { __: __; }
 
     var person: IPerson = {
-      lastName: 'Doe'
+      __: __
     };
     expect(person.lastName).to.equal('Doe');
   });
@@ -25,13 +25,11 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female';
     }
 
-    interface IPerson {
-      name: string;
-    }
+    interface __ { __: __; }
 
     var person: IPerson = {
       gender: 'male',
-      name: 'Chuck'
+      __: __
     };
     expect(person.gender).to.equal('male');
     expect(person.name).to.equal('Chuck');
@@ -42,13 +40,11 @@ describe('TS interfaces', () => {
       gender: 'male' | 'female' | 'other';
     }
 
-    interface INamedPerson extends IPerson {
-      name: string;
-    }
+    interface __ extends __ { __: __; }
 
     var person: INamedPerson = {
-      gender: 'other',
-      name: 'Conchita'
+      gender: __,
+      name: __
     };
 
     expect(person.gender).to.equal('other');
@@ -62,10 +58,10 @@ describe('TS interfaces', () => {
     }
 
     var person: IPerson = {
-      firstName: 'John'
+      firstName: __
     };
 
-    if (person.lastName) {
+    if (__) {
       person.lastName = person.lastName.toUpperCase();
     }
 
@@ -74,10 +70,8 @@ describe('TS interfaces', () => {
   });
 
   it('can have readonly properties', () => {
-    // it does not transpile, ad this is good !
-    // remove the keyword to pass the test
     interface IPerson {
-      firstName: string;
+      readonly firstName: string;
     }
 
     var error: boolean = false;
@@ -85,6 +79,8 @@ describe('TS interfaces', () => {
       get firstName() { return 'John'; }
     };
 
+    // even if you pass the test, your ide should inform you of an error
+    // remove the keyword to pass the typechecking test
     try {
       person.firstName = 'Jane';
     }
@@ -93,21 +89,18 @@ describe('TS interfaces', () => {
     }
 
     expect(error).to.be.true;
-    expect(person.firstName).to.equal('John');
+    expect(person.firstName).to.equal(__);
   });
 
   it('can describe maps', () => {
     interface IPerson {
       firstName: string;
     }
-
-    interface IContacts {
-      [index: string]: IPerson;
-    }
+    interface __ { __: __; }
 
     var contacts: IContacts = {
-      johnId: {firstName: 'John'},
-      janeId: {firstName: 'Jane'}
+      johnId: { firstName: __ },
+      __: { __: 'Jane' }
     };
 
     ['johnId', 'janeId'].forEach(id =>
